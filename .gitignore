@@ -3,6 +3,7 @@
 out/
 venv/
 dist/
+build/
 dearpygui_ext.egg-info/
 Output/
 .DS_Store
