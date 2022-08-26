@@ -3,7 +3,8 @@ import dearpygui.dearpygui as dpg
 
 class mvLogger:
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None,**kwargs):
+        """when supplied kwargs, unpack into dpg.window"""
 
         self.log_level = 0
         self._auto_scroll = True
@@ -11,7 +12,10 @@ class mvLogger:
         if parent:
             self.window_id = parent
         else:
-            self.window_id = dpg.add_window(label="mvLogger", pos=(200, 200), width=500, height=500)
+            if kwargs:
+                self.window_id = dpg.add_window(**kwargs)
+            else:
+                self.window_id = dpg.add_window(label="mvLogger", pos=(200, 200), width=500, height=500)
         self.count = 0
         self.flush_count = 1000
 
